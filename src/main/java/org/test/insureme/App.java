@@ -2,11 +2,11 @@ package org.test.insureme;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.DriverManager;
+//import java.sql.DriverManager;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.hc.core5.util.Asserts;
+//import org.apache.hc.core5.util.Asserts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -28,14 +28,15 @@ public class App
     System.out.println("Script Started");	
        //initializing the web driver
    // System.setProperty("webdriver.chrome.driver", "/Users/shubham/Documents/softwares/chrome-driver/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "C:/Users/lenovo/eclipse-workspace/chromedriver/chromedriver.exe");
     WebDriverManager.chromedriver().setup();
     //setting properties
     ChromeOptions chromeOptions = new ChromeOptions();
-    chromeOptions.addArguments("--headless");
+//    chromeOptions.addArguments("--headless");
     // open url
     System.out.println("Driver opening up the url in browser");	
     WebDriver driver = new ChromeDriver(chromeOptions);
-    driver.get("http://18.191.213.1:8081/contact.html");	
+    driver.get("https://www.facebook.com");	
     
     //invole implicit waits to load the page
     driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -76,9 +77,8 @@ public class App
    
     driver.quit();
     
+       	
     
-    	
-    	
     	
         System.out.println( "Hello World!" );
     }
