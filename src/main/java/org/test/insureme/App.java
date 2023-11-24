@@ -36,7 +36,7 @@ public class App
     // open url
     System.out.println("Driver opening up the url in browser");	
     WebDriver driver = new ChromeDriver(chromeOptions);
-    driver.get("https://www.facebook.com");	
+    driver.get("http://15.207.14.223:8081//contact.html");	
     
     //invole implicit waits to load the page
     driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -65,8 +65,8 @@ public class App
     
     File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
     
-  //  File destFile = new File("/Users/shubham/Documents/test-reports.jpg");
-    File destFile = new File("/var/lib/jenkins/workspace/insure-me-test-scripts/test-reports.jpg");
+    File destFile = new File("/Users/lenovo/Documents/test-reports.jpg");
+    //File destFile = new File("/var/lib/jenkins/workspace/insure-me-test-scripts/test-reports.jpg");
     
     
     FileUtils.copyFile(srcFile, destFile);
