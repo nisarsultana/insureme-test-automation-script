@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>App.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">insureme</a> &gt; <a href="index.source.html" class="el_package">org.test.insureme</a> &gt; <span class="el_source">App.java</span></div><h1>App.java</h1><pre class="source lang-java linenums">package org.test.insureme;
+
+import java.io.File;
+import java.io.IOException;
+
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+/**
+ * Hello world!
+ *
+ */
+<span class="nc" id="L23">public class App </span>
+{
+    public static void main( String[] args ) throws InterruptedException, IOException
+    {
+    	
+<span class="nc" id="L28">    System.out.println(&quot;Script Started&quot;);	</span>
+       //initializing the web driver
+   // System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;/Users/shubham/Documents/softwares/chrome-driver/chromedriver&quot;);
+<span class="nc" id="L31">    WebDriverManager.chromedriver().setup();</span>
+    //setting properties
+<span class="nc" id="L33">    ChromeOptions chromeOptions = new ChromeOptions();</span>
+    //chromeOptions.addArguments(&quot;--headless&quot;);
+    // open url
+<span class="nc" id="L36">    System.out.println(&quot;Driver opening up the url in browser&quot;);	</span>
+<span class="nc" id="L37">    WebDriver driver = new ChromeDriver(chromeOptions);</span>
+<span class="nc" id="L38">    driver.get(&quot;http://65.0.124.138:8081/contact.html&quot;);	</span>
+    
+    //invole implicit waits to load the page
+<span class="nc" id="L41">    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);</span>
+    
+<span class="nc" id="L43">    System.out.println(&quot;Enter details in the form&quot;);</span>
+    //enter details
+    //input name
+<span class="nc" id="L46">    driver.findElement(By.id(&quot;inputName&quot;)).sendKeys(&quot;Sam&quot;);</span>
+<span class="nc" id="L47">    Thread.sleep(1000);</span>
+<span class="nc" id="L48">    driver.findElement(By.id(&quot;inputNumber&quot;)).sendKeys(&quot;999999999&quot;);</span>
+<span class="nc" id="L49">    Thread.sleep(1000);</span>
+<span class="nc" id="L50">    driver.findElement(By.id(&quot;inputMail&quot;)).sendKeys(&quot;sam@xyz.com&quot;);</span>
+<span class="nc" id="L51">    Thread.sleep(1000);</span>
+<span class="nc" id="L52">    driver.findElement(By.id(&quot;inputMessage&quot;)).sendKeys(&quot;Hi, I am interested in insurance&quot;);</span>
+<span class="nc" id="L53">    Thread.sleep(1000);</span>
+    
+<span class="nc" id="L55">    driver.findElement(By.id(&quot;my-button&quot;)).click();</span>
+    
+<span class="nc" id="L57">    String response = driver.findElement(By.id(&quot;response&quot;)).getText();</span>
+   
+<span class="nc" id="L59">    System.out.println(response);</span>
+    
+<span class="nc" id="L61">    System.out.println(&quot;test scripts executed&quot;);</span>
+    
+<span class="nc" id="L63">    TakesScreenshot scrShot = ((TakesScreenshot)driver);</span>
+    
+<span class="nc" id="L65">    File srcFile = scrShot.getScreenshotAs(OutputType.FILE);</span>
+    
+  // File destFile = new File(&quot;/Users/shubham/Documents/test-reports.jpg&quot;);
+<span class="nc" id="L68">    File destFile = new File(&quot;/var/lib/jenkins/workspace/insure-me-test-pipeline/test-reports.jpg&quot;);</span>
+    
+    
+<span class="nc" id="L71">    FileUtils.copyFile(srcFile, destFile);</span>
+    
+<span class="nc" id="L73">    Thread.sleep(1000);</span>
+    
+ 
+   
+<span class="nc" id="L77">    driver.quit();</span>
+    
+    
+    	
+    	
+    	
+<span class="nc" id="L83">        System.out.println( &quot;Hello World!&quot; );</span>
+<span class="nc" id="L84">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
